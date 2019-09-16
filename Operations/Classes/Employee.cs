@@ -14,6 +14,7 @@ namespace Operations.Classes
         public string DepartmentName {get;set;}
         public bool Equals(Employee other)
         {
+            // ReSharper disable once PossibleNullReferenceException
             return other.EmployeeIdentifier == EmployeeIdentifier && other.FirstName == FirstName && other.DepartmentName == DepartmentName;
 
         }
