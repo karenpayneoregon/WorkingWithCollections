@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Security.Cryptography.X509Certificates;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Operations.Classes;
 using Operations.Extensions;
@@ -12,6 +13,29 @@ namespace TestProject
     [TestClass]
     public class UnitTest1 : TestBase
     {
+        [TestMethod]
+        public void GroupByTest()
+        {
+            JoinNotes();
+        }
+        [TestMethod]
+        public void SimpleDistinctNumberTest()  
+        {
+            var longs = new List<long> { 1, 2, 3, 4, 3, 2, 5 };
+            var unique = longs.Distinct().ToList();
+            Assert.IsTrue(unique.Count == 5);
+
+        }
+        [TestMethod]
+        public void MyTestMethod()
+        {
+            string[] original = SupplierNameArray();
+
+            var withDuplicateValues = original.ToList();
+            var noDupicateValues = withDuplicateValues.Distinct().ToList();
+
+            Assert.IsTrue(noDupicateValues.Count == 29);
+        }
         /// <summary>
         /// Implements IEquatable on Product class to discard duplicates
         /// by primary key and foreign key
@@ -34,15 +58,9 @@ namespace TestProject
         ///    DepartmentName
         /// </summary>
         [TestMethod]
-        public void HashSetIEquatableTest() 
+        public void HashSetIEquatableTest()
         {
-            var employees = new HashSet<Employee>
-            {
-                {new Employee {EmployeeIdentifier = 1, FirstName = "Karen", LastName = "Payne", DepartmentName = "Finance"}},
-                {new Employee {EmployeeIdentifier = 3, FirstName = "Mary", LastName = "Jones",   DepartmentName = "IT"}},
-                {new Employee {EmployeeIdentifier = 1, FirstName = "Karen", LastName = "Payne",  DepartmentName = "Finance"}},
-                {new Employee {EmployeeIdentifier = 4, FirstName = "Frank", LastName = "Anderson",  DepartmentName = "IT"}}
-            };
+            var employees = EmployeeHashSet();
 
             Assert.IsTrue(employees.Count  == 3);
         }
@@ -93,12 +111,36 @@ namespace TestProject
         {
             var peopleList = new List<Person>();
 
-            peopleList.AddArrangeUniqueBy((person1, person2) => person1.Id == person2.Id, PeopleList());
+            peopleList.AddRangeUnique((person1, person2) => person1.Id == person2.Id, PeopleList());
 
             Assert.IsTrue(peopleList.Count == 3,
                 "People count incorrect for AddUniqueBy");
         }
+        /// <summary>
+        /// Get distinct items from a list and transform to a dictionary
+        /// where primary key is unique and company name unique.
+        ///
+        /// There is complexity in that if there are more than two duplicates
+        /// those will be excluded from the resulting dictionary.
+        /// </summary>
+        [TestMethod]
+        public void DictionaryTest()
+        {
+            var dictionaryFirst = SupplierList().Distinct(new ExampleComparer()).ToList()
+                .GroupBy(supplier => supplier.SupplierIdentifier)
+                .ToDictionary(grouping => grouping.Key, grouping => grouping.First());
+
+            Assert.IsTrue(dictionaryFirst.Count == 2, 
+                "Expected two for dictionary first");
+
+
+            var dictionaryLast = SupplierList().Distinct(new ExampleComparer()).ToList()
+                .GroupBy(supplier => supplier.SupplierIdentifier)
+                .ToDictionary(grouping => grouping.Key, grouping => grouping.Last());
+
+            Assert.IsTrue(dictionaryLast.Count == 2,
+                "Expected two for dictionary last");
+
+        }
     }
-
-
 }

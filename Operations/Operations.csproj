@@ -48,6 +48,7 @@
     <Compile Include="Classes\Employee.cs" />
     <Compile Include="Classes\Person.cs" />
     <Compile Include="Classes\Product.cs" />
+    <Compile Include="Classes\Suppliers.cs" />
     <Compile Include="Extensions\CollectionExtensions.cs" />
     <Compile Include="Interfaces\IBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

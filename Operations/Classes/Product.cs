@@ -14,19 +14,19 @@ namespace Operations.Classes
         public bool Equals(Product other)
         {
 
-            //Check whether the compared object is null. 
-            if (ReferenceEquals(other, null)) return false;
+            if (ReferenceEquals(other, null))
+            {
+                return false;
+            }
 
-            //Check whether the compared object references the same data. 
-            if (ReferenceEquals(this, other)) return true;
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
 
             //Check whether the products' properties are equal. 
             return CategoryIdentifier.Equals(other.CategoryIdentifier) && ProductName.Equals(other.ProductName);
         }
-
-        // If Equals() returns true for a pair of objects  
-        // then GetHashCode() must return the same value for these objects. 
-
         public override int GetHashCode()
         {
 
@@ -38,19 +38,6 @@ namespace Operations.Classes
 
             //Calculate the hash code for the product. 
             return hashProductName ^ hashProductCode;
-        }
-    }
-
-    public class Dummy
-    {
-
-
-        public int Id { get; set; } 
-        public string Name { get; set; }
-
-        public override string ToString()
-        {
-            return $"Id: {Id}, Name: {Name}";
         }
     }
 }
