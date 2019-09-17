@@ -23,6 +23,18 @@ namespace Operations.Extensions
                 self.Add(item);
             }
         }
+        /// <summary>
+        /// Add item if not currently in the list case insensitive 
+        /// </summary>
+        /// <param name="self"></param>
+        /// <param name="item"></param>
+        public static void AddUnique(this List<string> self, string item)
+        {
+            if (!self.Contains(item, StringComparer.OrdinalIgnoreCase))
+            {
+                self.Add(item);
+            }
+        }
 
         /// <summary>
         /// Adds only items that do not exist in source.

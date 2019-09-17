@@ -13,28 +13,77 @@ namespace TestProject
     [TestClass]
     public class UnitTest1 : TestBase
     {
+        /// <summary>
+        /// For article text demo for performing distinct against
+        /// a list with by a foreign key in this case the duplicates
+        /// are okay
+        /// </summary>
         [TestMethod]
         public void GroupByTest()
         {
             JoinNotes();
         }
+        /// <summary>
+        /// Example of working with a pre-existing list of numbers with
+        /// duplicates using Distinct extension.
+        /// </summary>
         [TestMethod]
         public void SimpleDistinctNumberTest()  
         {
             var longs = new List<long> { 1, 2, 3, 4, 3, 2, 5 };
             var unique = longs.Distinct().ToList();
             Assert.IsTrue(unique.Count == 5);
+        }
+        /// <summary>
+        /// Conventional logic flow to take incoming data,
+        /// add to a new list without duplicates
+        /// </summary>
+        [TestMethod]
+        public void ConventionalAddStringToListTest() 
+        {
+            var data = new List<long> { 1, 2, 3, 4, 3, 2, 5 };
+            var results = new List<long>();
+
+            foreach (var item in data)
+            {
+                if (!results.Contains(item))
+                {
+                    results.Add(item);
+                }
+            }
+
+            Assert.IsTrue(results.Count == 5);
 
         }
+        /// <summary>
+        /// Example of working with a pre-existing list of strings with
+        /// duplicates using Distinct extension. Is not case insensitive
+        /// </summary>
         [TestMethod]
-        public void MyTestMethod()
+        public void SimpleDistinctStringsTest() 
         {
             string[] original = SupplierNameArray();
 
             var withDuplicateValues = original.ToList();
-            var noDupicateValues = withDuplicateValues.Distinct().ToList();
+            var noDuplicateValues = withDuplicateValues.Distinct().ToList();
 
-            Assert.IsTrue(noDupicateValues.Count == 29);
+            Assert.IsTrue(noDuplicateValues.Count == 29);
+        }
+        /// <summary>
+        /// Example for preventing duplicate strings in list of string using
+        /// case insensitive extension method
+        /// </summary>
+        [TestMethod]
+        public void AddUniqueStringsToListTest()
+        {
+            var nameList = new List<string>();
+
+            nameList.AddUnique("Karen");
+            nameList.AddUnique("karen");
+
+            Assert.IsTrue(nameList.Count == 1, 
+                "Failed add unique string");
+            
         }
         /// <summary>
         /// Implements IEquatable on Product class to discard duplicates
