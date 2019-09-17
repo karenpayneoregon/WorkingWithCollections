@@ -175,7 +175,7 @@ namespace TestProject
         [TestMethod]
         public void DictionaryTest()
         {
-            var dictionaryFirst = SupplierList().Distinct(new ExampleComparer()).ToList()
+            var dictionaryFirst = SupplierList().Distinct(new SuppliersComparer()).ToList()
                 .GroupBy(supplier => supplier.SupplierIdentifier)
                 .ToDictionary(grouping => grouping.Key, grouping => grouping.First());
 
@@ -183,7 +183,7 @@ namespace TestProject
                 "Expected two for dictionary first");
 
 
-            var dictionaryLast = SupplierList().Distinct(new ExampleComparer()).ToList()
+            var dictionaryLast = SupplierList().Distinct(new SuppliersComparer()).ToList()
                 .GroupBy(supplier => supplier.SupplierIdentifier)
                 .ToDictionary(grouping => grouping.Key, grouping => grouping.Last());
 
