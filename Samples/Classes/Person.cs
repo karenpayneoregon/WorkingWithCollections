@@ -20,18 +20,17 @@ namespace Samples.Classes
             /*
              * See abbreviated / extension AreEqual below
              */
-            return 
-                Identifier == person.Identifier &&
-                string.Equals(FirstName, person.FirstName, StringComparison.OrdinalIgnoreCase) &&
-                string.Equals(LastName, person.LastName, StringComparison.OrdinalIgnoreCase);
+            return Identifier == person.Identifier && string.Equals(FirstName, person.FirstName, StringComparison.OrdinalIgnoreCase) && 
+                   string.Equals(LastName, person.LastName, StringComparison.OrdinalIgnoreCase);
+
         }
 
-        public bool Equals(Person p)
+        public bool Equals(Person person)
         {
-            if (p == null)
+            if (person == null)
                 return false;
 
-            return Identifier == p.Identifier && FirstName.AreEqual(p.FirstName) &&LastName.AreEqual(p.LastName);
+            return Identifier == person.Identifier && FirstName.AreEqual(person.FirstName) &&LastName.AreEqual(person.LastName);
         }
 
         public override int GetHashCode()
