@@ -300,13 +300,13 @@ namespace TestProject
         public void CustomersComparerTest() 
         {
 
-            var customers = CustomerList().Distinct(new CustomerComparer()).ToList();
+            var customers = CustomerList().Distinct(new CustomerNameStreetCityCountryComparer()).ToList();
             Assert.IsTrue(customers.Count == 2, 
                 "Expected two customers");
 
             var secondAttempt = CustomerList();
             secondAttempt[0].CountryIdentfier = 1;
-            customers = secondAttempt.Distinct(new CustomerComparer()).ToList();
+            customers = secondAttempt.Distinct(new CustomerNameStreetCityCountryComparer()).ToList();
             Assert.IsTrue(customers.Count == 3,
                 "Expected three customers");
 

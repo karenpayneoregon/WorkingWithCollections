@@ -46,7 +46,8 @@
   <ItemGroup>
     <Compile Include="Classes\Category.cs" />
     <Compile Include="Classes\Customer.cs" />
-    <Compile Include="Classes\CustomerComparer.cs" />
+    <Compile Include="Classes\CustomerNameStreetCityCountryComparer.cs" />
+    <Compile Include="Classes\CustomerNameCountryComparer.cs" />
     <Compile Include="Classes\Employee.cs" />
     <Compile Include="Classes\Person.cs" />
     <Compile Include="Classes\Product.cs" />
