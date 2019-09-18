@@ -14,7 +14,7 @@ namespace TestProject
     public class UnitTest1 : TestBase
     {
         [TestMethod]
-        public void AddUniqueDates()
+        public void AddUniqueDatesWithExtensionMethod()
         {
             var datesTimes = DateTimeList();
 
@@ -30,7 +30,44 @@ namespace TestProject
 
         }
         [TestMethod]
-        public void AddUniqueIntTest()
+        public void AddUniqueDatesWithoutExtensionMethod()
+        {
+            var datesTimes = DateTimeList();
+
+            var dateTimesDistinct = new List<DateTime>();
+
+            foreach (var dateTime in datesTimes)
+            {
+                if (!dateTimesDistinct.Contains(dateTime))
+                {
+                    dateTimesDistinct.Add(dateTime);
+                }
+            }
+
+            Assert.IsTrue(dateTimesDistinct.Count == 3,
+                "Expected three unique dates");
+
+        }
+        [TestMethod]
+        public void AddUniqueIntWithoutExtensionTest()
+        {
+            var integerList = IntList();
+            var intListDistIntList = new List<int>();
+
+            foreach (var integer in integerList)
+            {
+                if (!intListDistIntList.Contains(integer))
+                {
+                    intListDistIntList.Add(integer);
+                }
+            }
+
+            Assert.IsTrue(intListDistIntList.Count == 4,
+                "Expected four unique int");
+
+        }
+        [TestMethod]
+        public void AddUniqueIntWithExtensionTest()
         {
             var integerList = IntList();
             var intListDistIntList = new List<int>();
@@ -107,7 +144,7 @@ namespace TestProject
         /// add to a new list without duplicates
         /// </summary>
         [TestMethod]
-        public void ConventionalAddStringToListTest() 
+        public void ConventionalAddLongToListTest() 
         {
             var data = new List<long> { 1, 2, 3, 4, 3, 2, 5 };
             var results = new List<long>();
@@ -258,6 +295,57 @@ namespace TestProject
             Assert.IsTrue(dictionaryLast.Count == 2,
                 "Expected two for dictionary last");
 
+        }
+        [TestMethod]
+        public void CustomersComparerTest() 
+        {
+
+            var customers = CustomerList().Distinct(new CustomerComparer()).ToList();
+            Assert.IsTrue(customers.Count == 2, 
+                "Expected two customers");
+
+            var secondAttempt = CustomerList();
+            secondAttempt[0].CountryIdentfier = 1;
+            customers = secondAttempt.Distinct(new CustomerComparer()).ToList();
+            Assert.IsTrue(customers.Count == 3,
+                "Expected three customers");
+
+
+        }
+        /// <summary>
+        /// Example of what might be done by a typical developer,
+        /// read data from an external data source which potentially
+        /// have duplicate entries which would be tested after the
+        /// list is populated then iterate incoming data, assert for
+        /// duplicates by, in this case three fields where strings
+        /// are not case insensitive in a for-each.
+        ///
+        /// The method above uses a IEqualityComparer to perform the
+        /// same task, keeps code clean where the actual work is being done.
+        /// </summary>
+        [TestMethod]
+        public void CustomersConventionalTest() 
+        {
+
+            var customers = CustomerList();
+            var incomingCustomers = new List<Customer>();
+
+            foreach (var customer in customers)
+            {
+                var cust = incomingCustomers.FirstOrDefault(c => 
+                    c.CompanyName == customer.CompanyName && 
+                    c.Street == customer.Street &&  
+                    c.City == customer.City &&
+                    c.CountryIdentfier == customer.CountryIdentfier);
+
+                if (cust == null)
+                {
+                    incomingCustomers.Add(customer);
+                }
+            }
+
+            Assert.IsTrue(incomingCustomers.Count == 2, 
+                "Customer conventional expected two customers");
         }
     }
 }

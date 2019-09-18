@@ -27,6 +27,16 @@ namespace TestProject.BaseClasses
             return new List<int>() {45,1,23,1,23,45,2};
         }
 
+        protected List<Customer> CustomerList()
+        {
+            return new List<Customer>()
+            {
+                new Customer() {CompanyName = "Around the Horn", Street = "120 Hanover Sq.", City = "London", PostalCode = "WA1 1DP", CountryIdentfier = 19},
+                new Customer() {CompanyName = "La maison d'Asie", Street = "1 rue Alsace-Lorraine", City = "Toulouse", PostalCode = "31000", CountryIdentfier = 8},
+                new Customer() {CompanyName = "Around the Horn", Street = "120 Hanover Sq.", City = "London", PostalCode = "WA1 1DP", CountryIdentfier = 19}
+            };
+        }
+
         protected List<Author> Authors()
         {
             return new List<Author>()
