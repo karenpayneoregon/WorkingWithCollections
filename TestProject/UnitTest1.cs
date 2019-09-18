@@ -328,6 +328,8 @@ namespace TestProject
         {
 
             var customers = CustomerList();
+
+
             var incomingCustomers = new List<Customer>();
 
             foreach (var customer in customers)

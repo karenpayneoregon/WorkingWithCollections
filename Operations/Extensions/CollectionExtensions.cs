@@ -33,6 +33,9 @@ namespace Operations.Extensions
         /// <remarks>Naming done to not conflict with extension method above</remarks>
         public static bool AddUniqueNoInterface<T>(this ICollection<T> sender, T pValue)
         {
+
+            
+
             var alreadyHasValue = sender.Contains(pValue);
 
             if (!alreadyHasValue)
