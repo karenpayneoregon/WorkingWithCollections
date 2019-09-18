@@ -13,6 +13,74 @@ namespace TestProject
     [TestClass]
     public class UnitTest1 : TestBase
     {
+        [TestMethod]
+        public void AddUniqueDates()
+        {
+            var datesTimes = DateTimeList();
+
+            var dateTimesDistinct = new List<DateTime>();
+
+            foreach (var dateTime in datesTimes)
+            {
+                dateTimesDistinct.AddUniqueNoInterface(dateTime);
+            }
+
+            Assert.IsTrue(dateTimesDistinct.Count == 3,
+                "Expected three unique dates");
+
+        }
+        [TestMethod]
+        public void AddUniqueIntTest()
+        {
+            var integerList = IntList();
+            var intListDistIntList = new List<int>();
+
+            foreach (var integer in integerList)
+            {
+                intListDistIntList.AddUniqueNoInterface(integer);
+            }
+
+            Assert.IsTrue(intListDistIntList.Count == 4, 
+                "Expected four unique int");
+
+        }
+        /// <summary>
+        /// This demonstrates how a generic method can fail as it
+        /// knows nothing about a string case. The test below handles
+        /// case properly
+        /// </summary>
+        [TestMethod]
+        public void AddUniqueStringCaseIssueTest()
+        {
+            var nameList = new List<string>() {"jim", "Jim", "BOB", "bob"};
+            var distinctNameList = new List<string>();
+
+            foreach (var name in nameList)
+            {
+                distinctNameList.AddUniqueNoInterface(name);
+            }
+
+            Assert.IsTrue(distinctNameList.Count == 4,
+                "Expected four names");
+        }
+        /// <summary>
+        /// Add unique strings to a list disregarding case of string.
+        /// </summary>
+        [TestMethod]
+        public void AddUniqueStringCaseInsensitiveTest()
+        {
+            var nameList = new List<string>() { "jim", "Jim", "BOB", "bob" };
+            var distinctNameList = new List<string>();
+
+            foreach (var name in nameList)
+            {
+                distinctNameList.AddUnique(name);
+            }
+
+            Assert.IsTrue(distinctNameList.Count == 2,
+                "Expected two names");
+        }
+
         /// <summary>
         /// For article text demo for performing distinct against
         /// a list with by a foreign key in this case the duplicates

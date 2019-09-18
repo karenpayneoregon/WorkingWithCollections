@@ -24,10 +24,30 @@ namespace Operations.Extensions
             }
         }
         /// <summary>
+        /// Adds a value uniquely to to a collection and returns a value whether the value was added or not.
+        /// </summary>
+        /// <typeparam name = "T">The generic collection value type</typeparam>
+        /// <param name = "sender">The collection.</param>
+        /// <param name = "pValue">The value to be added.</param>
+        /// <returns>Indicates whether the value was added or not</returns>
+        /// <remarks>Naming done to not conflict with extension method above</remarks>
+        public static bool AddUniqueNoInterface<T>(this ICollection<T> sender, T pValue)
+        {
+            var alreadyHasValue = sender.Contains(pValue);
+
+            if (!alreadyHasValue)
+            {
+                sender.Add(pValue);
+            }
+
+            return alreadyHasValue;
+        }
+        /// <summary>
         /// Add item if not currently in the list case insensitive 
         /// </summary>
         /// <param name="self"></param>
         /// <param name="item"></param>
+        /// <remarks>There could be an optional parameter to allow another comparer</remarks>
         public static void AddUnique(this List<string> self, string item)
         {
             if (!self.Contains(item, StringComparer.OrdinalIgnoreCase))

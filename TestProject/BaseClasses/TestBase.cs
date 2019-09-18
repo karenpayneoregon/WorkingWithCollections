@@ -11,6 +11,22 @@ namespace TestProject.BaseClasses
 {
     public class TestBase
     {
+        protected List<DateTime> DateTimeList()
+        {
+            return new List<DateTime>()
+            {
+                new DateTime(2019,9,12),
+                new DateTime(2019,9,13),
+                new DateTime(2019,9,12),
+                new DateTime(2019,9,11)
+            };
+        }
+
+        protected List<int> IntList()
+        {
+            return new List<int>() {45,1,23,1,23,45,2};
+        }
+
         protected List<Author> Authors()
         {
             return new List<Author>()
@@ -33,7 +49,9 @@ namespace TestProject.BaseClasses
             };
         }
         /// <summary>
-        /// Demonstration for explanations in article
+        /// Demonstration for explanations in article. Here we are
+        /// not working with duplicates but instead showing how to
+        /// work with retrieving data via grouping.
         /// </summary>
         public void JoinNotes()
         {
