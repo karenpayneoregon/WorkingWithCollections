@@ -54,6 +54,7 @@
     <Compile Include="Classes\Suppliers.cs" />
     <Compile Include="Classes\SuppliersComparer.cs" />
     <Compile Include="Extensions\CollectionExtensions.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Interfaces\IBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
