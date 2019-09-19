@@ -133,26 +133,4 @@ namespace Samples
         }
 
     }
-    public class ProductA : IEquatable<Pet>
-    {
-        public string Name { get; set; }
-        public int Code { get; set; }
-
-        public bool Equals(Pet other)
-        {
-            if (other is null)
-                return false;
-
-            return Name == other.Name && Code == other.Code;
-        }
-
-        public override bool Equals(object obj) => Equals(obj as Pet);
-        public override int GetHashCode()
-        {
-            unchecked
-            {
-                return ((Name != null ? Name.GetHashCode() : 0) * 397) ^ Code;
-            }
-        }
-    }
 }
