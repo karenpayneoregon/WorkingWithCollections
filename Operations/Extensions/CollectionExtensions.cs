@@ -24,7 +24,8 @@ namespace Operations.Extensions
             }
         }
         /// <summary>
-        /// Adds a value uniquely to to a collection and returns a value whether the value was added or not.
+        /// Adds a value uniquely to to a collection and returns
+        /// a value whether the value was added or not.
         /// </summary>
         /// <typeparam name = "T">The generic collection value type</typeparam>
         /// <param name = "sender">The collection.</param>
@@ -33,9 +34,6 @@ namespace Operations.Extensions
         /// <remarks>Naming done to not conflict with extension method above</remarks>
         public static bool AddUniqueNoInterface<T>(this ICollection<T> sender, T pValue)
         {
-
-            
-
             var alreadyHasValue = sender.Contains(pValue);
 
             if (!alreadyHasValue)

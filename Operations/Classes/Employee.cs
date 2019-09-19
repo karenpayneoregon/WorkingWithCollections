@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Operations.Classes
 {
@@ -14,12 +10,22 @@ namespace Operations.Classes
         public string DepartmentName {get;set;}
         public bool Equals(Employee other)
         {
-            // ReSharper disable once PossibleNullReferenceException
-            return other.EmployeeIdentifier == EmployeeIdentifier && other.FirstName == FirstName && other.DepartmentName == DepartmentName;
+            return other.EmployeeIdentifier == EmployeeIdentifier && 
+                   other.FirstName == FirstName && 
+                   other.DepartmentName == DepartmentName;
 
         }
-        public override int GetHashCode() =>
-            new { EmployeeIdentifier, FirstName, LastName, DepartmentName }.GetHashCode();
 
+        public override int GetHashCode()
+        {
+            return StringComparer.OrdinalIgnoreCase.GetHashCode(FirstName) ^
+                   StringComparer.OrdinalIgnoreCase.GetHashCode(LastName) ^
+                   StringComparer.OrdinalIgnoreCase.GetHashCode(DepartmentName);
+        }
+
+        public override string ToString()
+        {
+            return base.ToString();
+        }
     }
 }

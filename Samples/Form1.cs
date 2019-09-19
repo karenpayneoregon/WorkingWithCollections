@@ -30,7 +30,7 @@ namespace Samples
                 Console.WriteLine("No");
             }
 
-            if ("Karen".IndexOf("Aren", StringComparison.OrdinalIgnoreCase) >=0)
+            if ("Karen".Contains("Aren",StringComparison.OrdinalIgnoreCase))
             {
                 Console.WriteLine("Yes");
             }

@@ -131,7 +131,7 @@ namespace TestProject.BaseClasses
         {
             return new HashSet<Employee>
             {
-                {new Employee {EmployeeIdentifier = 1, FirstName = "Karen", LastName = "Payne", DepartmentName = "Finance"}},
+                {new Employee {EmployeeIdentifier = 1, FirstName = "Karen", LastName = "payne", DepartmentName = "Finance"}},
                 {new Employee {EmployeeIdentifier = 3, FirstName = "Mary", LastName = "Jones",   DepartmentName = "IT"}},
                 {new Employee {EmployeeIdentifier = 1, FirstName = "Karen", LastName = "Payne",  DepartmentName = "Finance"}},
                 {new Employee {EmployeeIdentifier = 4, FirstName = "Frank", LastName = "Anderson",  DepartmentName = "IT"}}

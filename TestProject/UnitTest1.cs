@@ -17,8 +17,8 @@ namespace TestProject
         public void AddUniqueDatesWithExtensionMethod()
         {
             var datesTimes = DateTimeList();
-
             var dateTimesDistinct = new List<DateTime>();
+
 
             foreach (var dateTime in datesTimes)
             {
@@ -265,7 +265,8 @@ namespace TestProject
         {
             var peopleList = new List<Person>();
 
-            peopleList.AddRangeUnique((person1, person2) => person1.Id == person2.Id, PeopleList());
+            peopleList.AddRangeUnique((person1, person2) => 
+                person1.Id == person2.Id, PeopleList());
 
             Assert.IsTrue(peopleList.Count == 3,
                 "People count incorrect for AddUniqueBy");
@@ -309,8 +310,6 @@ namespace TestProject
             customers = secondAttempt.Distinct(new CustomerNameStreetCityCountryComparer()).ToList();
             Assert.IsTrue(customers.Count == 3,
                 "Expected three customers");
-
-
         }
         /// <summary>
         /// Example of what might be done by a typical developer,
