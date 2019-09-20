@@ -20,8 +20,8 @@ namespace TestProject
         [TestMethod]
         public void OverloadEqualOperatorTest() 
         {
-            var person1 = new Other.Person() { Identifier = 1, FirstName = "Karen", LastName = "payne" };
-            var person2 = new Other.Person() { Identifier = 1, FirstName = "Karen", LastName = "Payne" };
+            var person1 = new Other::Person() { Identifier = 1, FirstName = "Karen", LastName = "payne" };
+            var person2 = new Other::Person() { Identifier = 1, FirstName = "Karen", LastName = "Payne" };
 
             Assert.IsTrue(person1.Equals(person2),"Expected operator overload 1 to work");
             Assert.IsTrue(person1 == person2, "Expected operator overload 2 to work");
