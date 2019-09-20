@@ -67,6 +67,7 @@
     <Compile Include="Classes\Product.vb" />
     <Compile Include="Classes\Suppliers.vb" />
     <Compile Include="Classes\SuppliersComparer.vb" />
+    <Compile Include="Examples\EmployeeOperations.vb" />
     <Compile Include="Extensions\CollectionExtensions.vb" />
     <Compile Include="Extensions\StringExtensions.vb" />
     <Compile Include="Interfaces\IBase.vb" />

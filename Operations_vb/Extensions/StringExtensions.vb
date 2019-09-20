@@ -7,7 +7,7 @@
         ''' <param name="item"></param>
         ''' <returns>true if both strings are a match, false if not a match</returns>
         <Runtime.CompilerServices.Extension>
-        Public Function AreEqual(ByVal sender As String, ByVal item As String) As Boolean
+        Public Function AreEqual(sender As String, item As String) As Boolean
             Return String.Equals(sender, item, StringComparison.OrdinalIgnoreCase)
         End Function
         ''' <summary>
@@ -18,8 +18,12 @@
         ''' <param name="comparer">StringComparison</param>
         ''' <returns></returns>
         <Runtime.CompilerServices.Extension>
-        Public Function Contains(ByVal source As String, ByVal compareToken As String, Optional ByVal comparer As StringComparison = StringComparison.OrdinalIgnoreCase) As Boolean
+        Public Function Contains(
+            source As String, compareToken As String,
+            Optional ByVal comparer As StringComparison = StringComparison.OrdinalIgnoreCase) As Boolean
+
             Return source?.IndexOf(compareToken, comparer) >= 0
+
         End Function
     End Module
 End Namespace
