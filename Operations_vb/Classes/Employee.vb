@@ -26,7 +26,7 @@ Namespace Classes
         End Function
 
         Public Overrides Function ToString() As String
-            Return MyBase.ToString()
+            Return $"{EmployeeIdentifier} {FirstName} {LastName} {DepartmentName}"
         End Function
     End Class
 End Namespace
