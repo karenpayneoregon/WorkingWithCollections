@@ -5,6 +5,7 @@ using System.Net;
 using System.Security.Cryptography.X509Certificates;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Operations.Classes;
+using Other = Operations.OtherClasses; 
 using Operations.Extensions;
 using TestProject.BaseClasses;
 
@@ -13,6 +14,19 @@ namespace TestProject
     [TestClass]
     public class UnitTest1 : TestBase
     {
+        /// <summary>
+        /// Demonstrate operator overload
+        /// </summary>
+        [TestMethod]
+        public void OverloadEqualOperatorTest() 
+        {
+            var person1 = new Other.Person() { Identifier = 1, FirstName = "Karen", LastName = "payne" };
+            var person2 = new Other.Person() { Identifier = 1, FirstName = "Karen", LastName = "Payne" };
+
+            Assert.IsTrue(person1.Equals(person2),"Expected operator overload 1 to work");
+            Assert.IsTrue(person1 == person2, "Expected operator overload 2 to work");
+
+        }
         [TestMethod]
         public void AddUniqueDatesWithExtensionMethod()
         {
