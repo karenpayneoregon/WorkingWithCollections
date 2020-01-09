@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 namespace Operations.Classes
 {
     public class Product : IEquatable<Product>
@@ -22,16 +20,17 @@ namespace Operations.Classes
             }
 
             //Check whether the products' properties are equal. 
-            return CategoryIdentifier.Equals(other.CategoryIdentifier) && ProductName.Equals(other.ProductName);
+            return CategoryIdentifier.Equals(other.CategoryIdentifier) && 
+                   ProductName.Equals(other.ProductName);
         }
         public override int GetHashCode()
         {
 
             //Get hash code for the Name field if it is not null. 
-            int hashProductName = ProductName == null ? 0 : ProductName.GetHashCode();
+            var hashProductName = ProductName == null ? 0 : ProductName.GetHashCode();
 
             //Get hash code for the Code field. 
-            int hashProductCode = CategoryIdentifier.GetHashCode();
+            var hashProductCode = CategoryIdentifier.GetHashCode();
 
             //Calculate the hash code for the product. 
             return hashProductName ^ hashProductCode;

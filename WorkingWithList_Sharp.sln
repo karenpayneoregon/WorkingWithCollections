@@ -18,6 +18,10 @@ Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Operationsvb", "Operations_
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "OperationsvbConsole", "OperationsvbConsole\OperationsvbConsole.vbproj", "{142379A3-1FA3-42A6-AE83-69FC1AB952FD}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Visual Basic", "Visual Basic", "{0C53292A-A0B2-4C50-8BF0-FC5AB3E865D0}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "WindowsAppAddUnique", "WindowsAppAddUnique\WindowsAppAddUnique.vbproj", "{EDF14C91-9072-4796-812F-67C808A5D0FF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,9 +48,17 @@ Global
 		{142379A3-1FA3-42A6-AE83-69FC1AB952FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{142379A3-1FA3-42A6-AE83-69FC1AB952FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{142379A3-1FA3-42A6-AE83-69FC1AB952FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EDF14C91-9072-4796-812F-67C808A5D0FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDF14C91-9072-4796-812F-67C808A5D0FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDF14C91-9072-4796-812F-67C808A5D0FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDF14C91-9072-4796-812F-67C808A5D0FF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F5F87F9E-55AC-4A90-B5CE-63D7A0564B41} = {0C53292A-A0B2-4C50-8BF0-FC5AB3E865D0}
+		{EDF14C91-9072-4796-812F-67C808A5D0FF} = {0C53292A-A0B2-4C50-8BF0-FC5AB3E865D0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {34EFCBF8-BC00-42CC-BBFE-1025B2444CAA}
