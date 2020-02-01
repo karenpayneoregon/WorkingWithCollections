@@ -1,0 +1,1 @@
+﻿Not part of the article, used to answer a forum question. Uses the same concepts used in article code samples.
